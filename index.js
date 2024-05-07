@@ -26,7 +26,7 @@ app.post('/', async (req, res) => {
     }
     });
 
-    app.get('/', async (req, res) => {
+    app.get('/', (req, res) => {
         res.send('Hello World');
     }
     );
