@@ -14,9 +14,7 @@ app.post('/', async (req, res) => {
     console.log(req.body)
     const g4f = new G4F();
         
-        const messages = [
-            { role: "user", content: req.body.texto}
-    ]
+        const messages = req.body.messages
     try{
         const results = await g4f.chatCompletion(messages);
         res.send(JSON.stringify(results));
