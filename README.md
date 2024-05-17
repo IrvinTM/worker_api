@@ -13,6 +13,10 @@ Body:
 
 ```JSON
 {
-  "messages": ["message 1", "message 2", ...]
+  "messages": [
+    { "role": "user", "content": "message 1" },
+    { "role": "assistant", "content": "response 1" },
+    { "role": "user", "content": "message 2" }
+  ]
 }
 ```
