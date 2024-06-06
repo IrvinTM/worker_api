@@ -6,3 +6,5 @@ export const routes = Router();
 routes.post("/", controler.chat);
 
 routes.post("/image", controler.getRealistic);
+
+routes.post("/absoluteReality", controler.getAbsoluteReality)

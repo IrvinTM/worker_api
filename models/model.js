@@ -40,4 +40,28 @@ export class model {
       console.error(error);
     }
   }
+  static async getAbsoluteReality(imagePrompt) {
+    const g4f = new G4F();
+    try {
+      const base64Image = await g4f.imageGeneration(imagePrompt, {
+        debug: true,
+        provider: g4f.providers.ProdiaStableDiffusion,
+        providerOptions: {
+          model: "absolutereality_v181.safetensors [3d9d4d2b]",
+          samplingSteps: 20,
+          cfgScale: 30,
+          height: 1024,
+          width: 1024,
+        },
+      });
+
+      if (base64Image) {
+        const image = Buffer.from(base64Image, "base64");
+        console.log("se va retornar la imagen de el modelo con exito");
+        return image;
+      }
+    } catch (error) {
+      console.error(error);
+  }
+  }
 }

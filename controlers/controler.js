@@ -32,4 +32,24 @@ export class controler {
       res.status(500).send("Internal Server Error");
     }
   }
+
+  static async getAbsoluteReality(req, res) {
+    const imagePrompt = req.body;
+    try {
+      const image = await model.getAbsoluteReality(imagePrompt);
+
+      if (image) {
+        res.writeHead(200, {
+          "Content-Type": "image/jpeg",
+          "Content-Length": image.length,
+        });
+        res.end(image);
+      } else {
+        res.status(500).send("Failed to generate image");
+      }
+    } catch (error) {
+      console.error(error);
+      res.status(500).send("Internal Server Error");
+    }
+  }
 }
